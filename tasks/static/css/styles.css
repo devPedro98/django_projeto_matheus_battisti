@@ -24,6 +24,10 @@
 
 /* Botão de adicionar */
 
+#add-link { 
+    text-decoration: none;
+}
+
 .add-div { 
     background-color: #3476e2;
     cursor: pointer;
@@ -34,18 +38,19 @@
     margin-right: 25px;
 }
 
-.fa.fa-plus { 
+.fas.fa-plus { 
     color: #fff;
-    margin-right: 5px;
+    margin-right: 10px;
     margin-left: 5px;
 }
 
 /* Search */
 
-.fas.fa-search { 
+.fas.fa-search {
     position: absolute;
     top: 12px;
     right: 26px;
+    cursor: pointer;
 }
 
 .search-div { 
@@ -71,6 +76,7 @@
     height: 50px;
     padding-top: 10px;
     border-bottom: 1px dashed #ccc;
+    text-decoration: none;
 }
 
 .fas.fa-trash, .fas.fa-edit { 
