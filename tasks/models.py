@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
 
@@ -6,6 +7,7 @@ class Task(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField() ## noqa não vai argumentos para não ter tamanho máximo.
     done = models.CharField(max_length=5, choices=STATUS, )
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
