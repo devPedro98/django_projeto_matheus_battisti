@@ -12,7 +12,7 @@
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{%static  'fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static  'fontawesome/css/all.min.css' %}">
 </head>
 <body>
     <div class="container-fluid">
@@ -24,15 +24,26 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  {% if user.is_authenticated %}
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Tarefas</a>
+                    <a class="nav-link active" aria-current="page" href="/">Tarefas</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Usuários</a>
                   </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/accounts/login">Entrar</a>
+                  </li>
+                  {% endif %}
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Sobre nós</a>
                   </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/accounts/logout">Sair</a>
+                  </li>
+                  {% endif %}
                 </ul>
         
               </div>
