@@ -8,10 +8,14 @@ from .models import Task
 
 
 def taskList(request):
-    tasks_list = Task.objects.all().order_by('-created_at')
-    paginator = Paginator(tasks_list, 6)
-    page = request.GET.get('page')
-    tasks = paginator.get_page(page)
+    search = request.GET.get('search')
+    if search:
+        tasks = Task.objects.filter(title__icontains=search)
+    else:
+        tasks_list = Task.objects.all().order_by('-created_at')
+        paginator = Paginator(tasks_list, 6)
+        page = request.GET.get('page')
+        tasks = paginator.get_page(page)
     return render(request, 'tasks/list.html', {'tasks': tasks})
 
 
