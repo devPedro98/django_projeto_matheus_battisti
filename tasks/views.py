@@ -11,8 +11,12 @@ from .models import Task
 @login_required
 def taskList(request):
     search = request.GET.get('search')
+    filter = request.GET.get('filter')
+
     if search:
         tasks = Task.objects.filter(title__icontains=search, user=request.user)
+    elif filter:
+        tasks = Task.objects.filter(done=filter, user=request.user)
     else:
         tasks_list = Task.objects.all().order_by('-created_at').filter(user=request.user) # noqa
         paginator = Paginator(tasks_list, 6)
